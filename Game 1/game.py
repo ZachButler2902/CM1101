@@ -38,11 +38,7 @@ def remove_spaces(text):
     >>> remove_spaces("   ")
     ''
     """
-    text = text.strip()
-    for ch in text:
-        if text[-1] == "":
-            text = text[:-1]
-    return text
+    return text.strip()
 
 
 def normalise_input(user_input):
