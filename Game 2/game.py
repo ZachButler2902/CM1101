@@ -34,16 +34,20 @@ def print_room_items(room):
     >>> print_room_items(rooms["Reception"])
     There is a pack of biscuits, a student handbook here.
     <BLANKLINE>
+    
     >>> print_room_items(rooms["Office"])
     There is a pen here.
     <BLANKLINE>
+    
     >>> print_room_items(rooms["Admins"])
+    
     (no output)
+
+    Note: <BLANKLINE> here means that doctest should expect a blank line.
     """
     if len(room['items'])> 0:
         print('There is ' + list_of_items(room['items']) + ' here.')
         print()
-
 
 def print_inventory_items(items):
     """This function takes a list of inventory items and displays it nicely, in a
@@ -104,6 +108,7 @@ def print_room(room):
     print()
     print_room_items(room)
 
+    
 def exit_leads_to(exits, direction):
     """This function takes a dictionary of exits and a direction (a particular
     exit taken from this dictionary). It returns the name of the room into which
@@ -300,7 +305,7 @@ def move(exits, direction):
     # Next room to go to
     return rooms[exits[direction]]
 
-
+    
 # This is the entry point of our program
 def main():
 
@@ -323,3 +328,4 @@ def main():
 # See https://docs.python.org/3.4/library/__main__.html for explanation
 if __name__ == "__main__":
     main()
+

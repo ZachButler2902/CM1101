@@ -16,18 +16,21 @@ def filter_words(words, skip_words):
     """This function takes a list of words and returns a copy of the list from
     which all words provided in the list skip_words have been removed.
     For example:
-
     >>> filter_words(["help", "me", "please"], ["me", "please"])
     ['help']
-
     >>> filter_words(["go", "south"], skip_words)
     ['go', 'south']
-
     >>> filter_words(['how', 'about', 'i', 'go', 'through', 'that', 'little', 'passage', 'to', 'the', 'south'], skip_words)
     ['go', 'passage', 'south']
-
     """
-    pass
+    words_to_remove = []
+    for word in words:
+        if word in skip_words:
+            words_to_remove.append(word)
+    for word in words_to_remove:
+        words.remove(word)
+    return words
+    
 
     
 def remove_punct(text):
@@ -35,7 +38,6 @@ def remove_punct(text):
     marks from a string. Spaces do not count as punctuation and should
     not be removed. The funcion takes a string and returns a new string
     which does not contain any puctuation. For example:
-
     >>> remove_punct("Hello, World!")
     'Hello World'
     >>> remove_punct("-- ...Hey! -- Yes?!...")
@@ -57,7 +59,6 @@ def normalise_input(user_input):
     any extra spaces between words) and further removes all "unimportant"
     words from the list of words using the filter_words() function. The
     resulting list of "important" words is returned. For example:
-
     >>> normalise_input("  Go   south! ")
     ['go', 'south']
     >>> normalise_input("!!!  tAkE,.    LAmp!?! ")
@@ -74,11 +75,8 @@ def normalise_input(user_input):
     ['take', 'gem']
     >>> normalise_input("How about I go through that little passage to the south...")
     ['go', 'passage', 'south']
-
     """
     # Remove punctuation and convert to lower case
     no_punct = remove_punct(user_input).lower()
-
-    no_punct = remove_punct(user_input).lower()
-    user_input_list = no_punct(user_input).lower()
+    user_input_list = no_punct.split()
     return filter_words(user_input_list, skip_words)
